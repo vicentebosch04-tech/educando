@@ -36,6 +36,7 @@
     .chip-blue { background: #bfdbfe; color: #1e40af; animation-delay: 0s; }
     .chip-green { background: #a7f3d0; color: #065f46; animation-delay: .5s; }
     .chip-yellow { background: #fde68a; color: #92400e; animation-delay: 1s; }
+    .chip-purple { background: #e9d5ff; color: #6b21a8; animation-delay: 1.5s; }
     @keyframes floatChip { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
     section { border-top: 1px solid var(--border); padding: 80px 2rem; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
@@ -149,6 +150,7 @@
       <div class="chip chip-blue">Matemática</div>
       <div class="chip chip-green">Lengua</div>
       <div class="chip chip-yellow">Ciencias</div>
+      <div class="chip chip-purple">Programación</div>
     </div>
   </div>
 </div>
@@ -187,36 +189,31 @@
 </section>
 
 <section id="materias">
-  <div class="section-inner">
-    <h2 class="section-title">Materias</h2>
-    <div class="materias-grid">
-      <div class="materia-card">
+  <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
         <div class="materia-icon">🧮</div>
         <h3>Matemática</h3>
         <p>Cálculo, problemas, fracciones, geometría básica y preparación de pruebas.</p>
       </div>
-      <div class="materia-card">
+      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
         <div class="materia-icon">📖</div>
         <h3>Lengua</h3>
         <p>Comprensión lectora, ortografía, escritura y técnicas de estudio.</p>
       </div>
-      <div class="materia-card">
+      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
         <div class="materia-icon">🌍</div>
         <h3>Ciencias Sociales</h3>
         <p>Historia y Geografía con resúmenes claros y actividades guiadas.</p>
       </div>
-      <div class="materia-card">
+      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
         <div class="materia-icon">🔬</div>
         <h3>Ciencias Naturales</h3>
         <p>Experimentos simples, método científico y apoyo para trabajos.</p>
       </div>
-      <div class="materia-card">
+      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
         <div class="materia-icon">💻</div>
         <h3>Programación</h3>
         <p>Introducción a la programación, lógica y primeros proyectos digitales.</p>
       </div>
-    </div>
-  </div>
 </section>
 
 <section id="precios">

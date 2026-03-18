@@ -290,8 +290,8 @@
             <option value="">Elegí una opción</option>
             <option>1° Primaria</option><option>2° Primaria</option><option>3° Primaria</option>
             <option>4° Primaria</option><option>5° Primaria</option><option>6° Primaria</option>
-            <option>7° Primaria</option><option>1° Secundaria</option><option>2° Secundaria</option>
-            <option>3° Secundaria</option><option>4° Secundaria</option><option>5° Secundaria</option>
+            <option>1° Secundaria</option><option>2° Secundaria</option><option>3° Secundaria</option>
+            <option>4° Secundaria</option><option>5° Secundaria</option><option>6° Secundaria</option>
           </select>
         </div>
         <div class="form-group">
@@ -398,28 +398,7 @@
     const contacto = inputs[7].value || '(sin contacto)';
     const comentario = inputs[8].value || '-';
 
-    const e1 = '\uD83C\uDF93';
-    const e2 = '\uD83D\uDC64';
-    const e3 = '\uD83D\uDCDA';
-    const e4 = '\uD83D\uDCD6';
-    const e5 = '\u23F1';
-    const e6 = '\uD83D\uDCC5';
-    const e7 = '\uD83D\uDD50';
-    const e8 = '\uD83D\uDCCD';
-    const e9 = '\uD83D\uDCDE';
-    const e10 = '\uD83D\uDCAC';
-
-    const mensaje = '*\u00A1Un paso m\u00E1s cerca de tu clase!*\n\n'
-      + e1 + ' *Nueva reserva - Educando*\n\n'
-      + e2 + ' *Alumno:* ' + alumno + '\n'
-      + e3 + ' *Grado/A\u00F1o:* ' + grado + '\n'
-      + e4 + ' *Materia:* ' + materia + '\n'
-      + e5 + ' *Tipo de clase:* ' + tipo + '\n'
-      + e6 + ' *D\u00EDa:* ' + dia + '\n'
-      + e7 + ' *Hora:* ' + hora + '\n'
-      + e8 + ' *Direcci\u00F3n:* ' + direccion + '\n'
-      + e9 + ' *Contacto:* ' + contacto + '\n'
-      + e10 + ' *Comentarios:* ' + comentario;
+    const mensaje = `*¡Un paso más cerca de tu clase!*\n\n🎓 *Nueva reserva - Educando*\n\n👤 *Alumno:* ${alumno}\n📚 *Grado/Año:* ${grado}\n📖 *Materia:* ${materia}\n⏱ *Tipo de clase:* ${tipo}\n📅 *Día:* ${dia}\n🕐 *Hora:* ${hora}\n📍 *Dirección:* ${direccion}\n📞 *Contacto:* ${contacto}\n💬 *Comentarios:* ${comentario}`;
 
     const url = 'https://wa.me/' + getNextNumber() + '?text=' + encodeURIComponent(mensaje);
     const btn = document.querySelector('.btn-green');

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Educando</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --blue-light: #eff6ff;
+      --green: #16a34a;
+      --green-btn: #22c55e;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #ffffff;
+      --section-bg: #f8fafc;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 1.1rem; color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo .logo-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1rem;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--text);
+      font-size: 0.95rem; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .btn-primary {
+      background: var(--blue); color: white;
+      border: none; border-radius: 8px;
+      padding: 10px 20px; font-size: 0.95rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s, transform .1s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1.5px solid var(--border); border-radius: 8px;
+      padding: 10px 20px; font-size: 0.95rem; font-weight: 500;
+      cursor: pointer; text-decoration: none;
+      transition: border-color .2s, background .2s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 80px 2rem;
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: center;
+    }
+    .hero-text h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900; line-height: 1.15;
+      color: var(--text); margin-bottom: 1.2rem;
+    }
+    .hero-text h1 span { color: var(--blue); }
+    .hero-text p {
+      color: var(--muted); font-size: 1rem;
+      margin-bottom: 2rem; max-width: 420px;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-visual {
+      background: linear-gradient(145deg, #ecfdf5, #f0fdf4, #fefce8);
+      border-radius: 20px; padding: 2.5rem;
+      min-height: 300px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .hero-chips {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .chip {
+      padding: 10px 20px; border-radius: 12px;
+      font-weight: 600; font-size: 0.95rem;
+      animation: floatChip 3s ease-in-out infinite;
+    }
+    .chip-blue { background: #bfdbfe; color: #1e40af; animation-delay: 0s; }
+    .chip-green { background: #a7f3d0; color: #065f46; animation-delay: .5s; }
+    .chip-yellow { background: #fde68a; color: #92400e; animation-delay: 1s; }
+    @keyframes floatChip {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { border-top: 1px solid var(--border); padding: 80px 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; margin-bottom: 2.5rem;
+      color: var(--text);
+    }
+
+    /* ── QUIÉNES SOMOS ── */
+    .quienes-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: center;
+    }
+    .quienes-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.97rem; }
+    .quienes-text strong { color: var(--text); }
+    .profiles {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+    }
+    .profile-card {
+      border: 1.5px solid var(--border); border-radius: 16px;
+      overflow: hidden; background: white;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .profile-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+    .profile-photo {
+      width: 100%; height: 200px; object-fit: cover;
+      background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+    }
+    .profile-info { padding: 1rem; }
+    .profile-info h3 { font-size: 0.95rem; font-weight: 700; }
+    .profile-info p { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── MATERIAS ── */
+    .materias-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;
+    }
+    .materia-card {
+      border: 1.5px solid var(--border); border-radius: 16px;
+      padding: 1.5rem; background: white;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .materia-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      border-color: var(--blue);
+    }
+    .materia-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .materia-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+    .materia-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── PRECIOS ── */
+    #precios { background: var(--section-bg); }
+    .precios-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+    }
+    .precio-card {
+      border: 1.5px solid var(--border); border-radius: 16px;
+      padding: 1.8rem; background: white;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .precio-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+    .precio-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+    .precio-card .desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.2rem; }
+    .precio-card .price {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem; font-weight: 700; margin-bottom: .3rem;
+    }
+    .precio-card .price-note { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .btn-blue-full {
+      display: block; width: 100%; text-align: center;
+      background: var(--blue); color: white;
+      border: none; border-radius: 8px;
+      padding: 10px; font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-blue-full:hover { background: var(--blue-dark); }
+
+    /* ── CÓMO FUNCIONA ── */
+    .pasos-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+    }
+    .paso-card {
+      border: 1.5px solid var(--border); border-radius: 16px;
+      padding: 1.8rem; background: white;
+    }
+    .paso-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--blue); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem; margin-bottom: 1rem;
+    }
+    .paso-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+    .paso-card p { font-size: 0.87rem; color: var(--muted); }
+
+    /* ── RESERVAR ── */
+    #reservar { background: var(--section-bg); }
+    .reservar-form-wrap { max-width: 700px; }
+    .reservar-form-wrap h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .reservar-form-wrap .subtitle { color: var(--muted); margin-bottom: 2rem; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: .5rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1.5px solid var(--border); border-radius: 10px;
+      padding: 10px 14px; font-size: 0.95rem; font-family: inherit;
+      background: white; color: var(--text);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit { display: flex; align-items: center; gap: 1rem; margin-top: .8rem; }
+    .btn-green {
+      background: var(--green-btn); color: white;
+      border: none; border-radius: 8px;
+      padding: 12px 24px; font-size: 0.97rem; font-weight: 700;
+      cursor: pointer; transition: background .2s, transform .1s;
+    }
+    .btn-green:hover { background: var(--green); transform: translateY(-1px); }
+    .form-note { font-size: 0.85rem; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #f9fafb; border-top: 1px solid var(--border);
+      padding: 3rem 2rem 1.5rem;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 2rem;
+    }
+    .footer-brand .logo { display: flex; align-items: center; gap: 10px; margin-bottom: .8rem; }
+    .footer-brand .logo .logo-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--blue); display: flex; align-items: center; justify-content: center;
+      color: white; font-size: .9rem;
+    }
+    .footer-brand .logo span { font-weight: 700; font-size: 1rem; }
+    .footer-brand .tagline { font-size: 0.87rem; color: var(--muted); }
+    .footer-brand .subtitle { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+    .footer-col h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem; }
+    .footer-col a, .footer-col p {
+      display: block; font-size: 0.88rem; color: var(--muted);
+      text-decoration: none; margin-bottom: .6rem;
+    }
+    .footer-col a:hover { color: var(--blue); }
+    .footer-col a.whatsapp { color: var(--blue); font-weight: 500; }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 1.2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.82rem; color: var(--muted);
+    }
+    .footer-bottom-links { display: flex; gap: 1.5rem; }
+    .footer-bottom-links a { color: var(--muted); text-decoration: none; }
+    .footer-bottom-links a:hover { color: var(--blue); }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--green-btn);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,.2);
+      cursor: pointer; text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+    .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .quienes-grid { grid-template-columns: 1fr; }
+      .profiles { grid-template-columns: 1fr 1fr; }
+      .materias-grid { grid-template-columns: 1fr 1fr; }
+      .precios-grid { grid-template-columns: 1fr; }
+      .pasos-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">☰</div>
+    Educando
+  </a>
+  <ul class="nav-links">
+    <li><a href="#quienes">Quiénes somos</a></li>
+    <li><a href="#materias">Materias</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#como">Cómo funciona</a></li>
+    <li><a href="#reservar">Reservar</a></li>
+  </ul>
+  <a href="#reservar" class="btn-primary">Reservar</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <h1>Clases particulares para alumnos de <span>Primaria y Secundaria</span></h1>
+    <p>Exalumnos del colegio, hoy ayudando a los más chicos a aprender mejor. Dos estudian en UDESA y uno en la UTDT. Vamos a tu casa o damos la clase online.</p>
+    <div class="hero-btns">
+      <a href="#reservar" class="btn-primary">Reservar una clase</a>
+      <a href="#materias" class="btn-secondary">Ver materias</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-chips">
+      <div class="chip chip-blue">Matemática</div>
+      <div class="chip chip-green">Lengua</div>
+      <div class="chip chip-yellow">Ciencias</div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIÉNES SOMOS -->
+<section id="quienes">
+  <div class="section-inner quienes-grid">
+    <div class="quienes-text">
+      <h2 class="section-title">Quiénes somos</h2>
+      <p>Somos tres exalumnos del <strong>Colegio Cardenal Newman</strong>. Hoy estudiamos en la <strong>Universidad de San Andrés (UDESA)</strong> y en la <strong>Universidad Torcuato Di Tella (UTDT)</strong>. Nos apasiona enseñar y acompañar a los chicos de primaria y secundaria para que ganen confianza y disfruten aprender.</p>
+      <p>Damos clases personalizadas, adaptadas al ritmo de cada alumno, y coordinamos horarios flexibles en el barrio.</p>
+    </div>
+    <div class="profiles">
+      <div class="profile-card">
+        <div class="profile-photo" style="background: linear-gradient(135deg,#d1fae5,#a7f3d0); font-size: 5rem;">👤</div>
+        <div class="profile-info">
+          <h3>Santiago Pereyra Iraola</h3>
+          <p>Exalumno Newman • Est. UTDT</p>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-photo" style="background: linear-gradient(135deg,#dbeafe,#bfdbfe); font-size: 5rem;">👤</div>
+        <div class="profile-info">
+          <h3>Vicente Bosch</h3>
+          <p>Exalumno Newman • Est. UDESA</p>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-photo" style="background: linear-gradient(135deg,#fce7f3,#fbcfe8); font-size: 5rem;">👤</div>
+        <div class="profile-info">
+          <h3>Sofía Lacoste</h3>
+          <p>Exalumno Newman • Est. UDESA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIAS -->
+<section id="materias">
+  <div class="section-inner">
+    <h2 class="section-title">Materias</h2>
+    <div class="materias-grid">
+      <div class="materia-card">
+        <div class="materia-icon">➗</div>
+        <h3>Matemática</h3>
+        <p>Cálculo, problemas, fracciones, geometría básica y preparación de pruebas.</p>
+      </div>
+      <div class="materia-card">
+        <div class="materia-icon">📚</div>
+        <h3>Lengua</h3>
+        <p>Comprensión lectora, ortografía, escritura y técnicas de estudio.</p>
+      </div>
+      <div class="materia-card">
+        <div class="materia-icon">🌍</div>
+        <h3>Ciencias Sociales</h3>
+        <p>Historia y Geografía con resúmenes claros y actividades guiadas.</p>
+      </div>
+      <div class="materia-card">
+        <div class="materia-icon">🔬</div>
+        <h3>Ciencias Naturales</h3>
+        <p>Experimentos simples, método científico y apoyo para trabajos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="section-inner">
+    <h2 class="section-title">Precios</h2>
+    <div class="precios-grid">
+      <div class="precio-card">
+        <h3>Clase de 1 hora</h3>
+        <p class="desc">Ideal para refuerzo puntual y tareas.</p>
+        <div class="price">$ 35.000,00</div>
+        <p class="price-note">a domicilio / zona barrio</p>
+        <a href="#reservar" class="btn-blue-full">Reservar esta clase</a>
+      </div>
+      <div class="precio-card">
+        <h3>Clase de 1 hora y 30</h3>
+        <p class="desc">Tiempo extra para preparar pruebas.</p>
+        <div class="price">$ 50.000,00</div>
+        <p class="price-note">a domicilio / zona barrio</p>
+        <a href="#reservar" class="btn-blue-full">Reservar esta clase</a>
+      </div>
+      <div class="precio-card">
+        <h3>Clase de 2 horas</h3>
+        <p class="desc">Sesión completa con práctica guiada.</p>
+        <div class="price">$ 70.000,00</div>
+        <p class="price-note">a domicilio / zona barrio</p>
+        <a href="#reservar" class="btn-blue-full">Reservar esta clase</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como">
+  <div class="section-inner">
+    <h2 class="section-title">Cómo funciona</h2>
+    <div class="pasos-grid">
+      <div class="paso-card">
+        <div class="paso-num">1</div>
+        <h3>Reservá tu clase</h3>
+        <p>Completá el formulario con la materia y horario preferido.</p>
+      </div>
+      <div class="paso-card">
+        <div class="paso-num">2</div>
+        <h3>Te contactamos</h3>
+        <p>Coordinamos detalles por WhatsApp o email.</p>
+      </div>
+      <div class="paso-card">
+        <div class="paso-num">3</div>
+        <h3>Vamos a tu casa o online</h3>
+        <p>Llegamos puntuales con plan de clase personalizado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVAR -->
+<section id="reservar">
+  <div class="section-inner">
+    <div class="reservar-form-wrap">
+      <h2>Reservá tu clase</h2>
+      <p class="subtitle">Completá el formulario y te contactamos para coordinar.</p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nombre del alumno</label>
+          <input type="text" placeholder="Ej: Juan Pérez" />
+        </div>
+        <div class="form-group">
+          <label>Grado / Año</label>
+          <select>
+            <option value="">Elegí una opción</option>
+            <option>1° Primaria</option>
+            <option>2° Primaria</option>
+            <option>3° Primaria</option>
+            <option>4° Primaria</option>
+            <option>5° Primaria</option>
+            <option>6° Primaria</option>
+            <option>7° Primaria</option>
+            <option>1° Secundaria</option>
+            <option>2° Secundaria</option>
+            <option>3° Secundaria</option>
+            <option>4° Secundaria</option>
+            <option>5° Secundaria</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Materia</label>
+          <select>
+            <option value="">Elegí una materia</option>
+            <option>Matemática</option>
+            <option>Lengua</option>
+            <option>Ciencias Sociales</option>
+            <option>Ciencias Naturales</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tipo de clase</label>
+          <select>
+            <option value="">Elegí duración</option>
+            <option>1 hora – $35.000</option>
+            <option>1 hora y 30 – $50.000</option>
+            <option>2 horas – $70.000</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Día</label>
+          <input type="date" />
+        </div>
+        <div class="form-group">
+          <label>Hora</label>
+          <input type="time" />
+        </div>
+        <div class="form-group full">
+          <label>Dirección</label>
+          <input type="text" placeholder="Calle y altura, barrio" />
+        </div>
+        <div class="form-group full">
+          <label>Datos de contacto</label>
+          <input type="text" placeholder="Ej: +54 9 11 1234 5678" />
+        </div>
+        <div class="form-group full">
+          <label>Comentarios (opcional)</label>
+          <textarea placeholder="Contanos brevemente en qué necesitan ayuda"></textarea>
+        </div>
+      </div>
+
+      <div class="form-submit">
+        <button class="btn-green" onclick="handleSubmit()">Enviar solicitud</button>
+        <span class="form-note">Respuesta dentro del mismo día hábil.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">☰</div>
+          <span>Educando</span>
+        </div>
+        <p class="subtitle">Exalumnos del Colegio Cardenal Newman</p>
+        <p class="tagline" style="margin-top:.6rem;">Aprender con confianza, de la mano de exalumnos del Newman.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>WhatsApp: <a href="https://wa.me/5491123843568" class="whatsapp">+5491123843568</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Secciones</h4>
+        <a href="#quienes">Quiénes somos</a>
+        <a href="#materias">Materias</a>
+        <a href="#como">Cómo funciona</a>
+        <a href="#reservar">Reservar</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Educando © 2025 – Exalumnos del Colegio Cardenal Newman</span>
+      <div class="footer-bottom-links">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5491139107111" target="_blank" class="wa-float" title="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // ── ROTACIÓN DE WHATSAPP ──
+  // Cada reserva enviada alterna entre los dos números
+  const WA_NUMBERS = ['5491139107111', '5491135578110'];
+
+  function getNextNumber() {
+    const current = parseInt(localStorage.getItem('wa_turn') || '0');
+    const next = (current + 1) % WA_NUMBERS.length;
+    localStorage.setItem('wa_turn', next);
+    return WA_NUMBERS[current];
+  }
+
+  function handleSubmit() {
+    // Recolectar datos del formulario
+    const inputs = document.querySelectorAll('#reservar input, #reservar select, #reservar textarea');
+    const alumno   = inputs[0].value || '(sin nombre)';
+    const grado    = inputs[1].value || '(sin grado)';
+    const materia  = inputs[2].value || '(sin materia)';
+    const tipo     = inputs[3].value || '(sin duración)';
+    const dia      = inputs[4].value || '(sin día)';
+    const hora     = inputs[5].value || '(sin hora)';
+    const direccion= inputs[6].value || '(sin dirección)';
+    const contacto = inputs[7].value || '(sin contacto)';
+    const comentario = inputs[8].value || '-';
+
+    const mensaje = `🎓 *Nueva reserva - Educando*
+
+👤 *Alumno:* ${alumno}
+📚 *Grado/Año:* ${grado}
+📖 *Materia:* ${materia}
+⏱ *Tipo de clase:* ${tipo}
+📅 *Día:* ${dia}
+🕐 *Hora:* ${hora}
+📍 *Dirección:* ${direccion}
+📞 *Contacto:* ${contacto}
+💬 *Comentarios:* ${comentario}`;
+
+    const numero = getNextNumber();
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
+    // Feedback visual
+    const btn = document.querySelector('.btn-green');
+    btn.textContent = '✓ Redirigiendo a WhatsApp...';
+    btn.style.background = '#15803d';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      window.open(url, '_blank');
+      btn.textContent = '✓ Solicitud enviada';
+      setTimeout(() => {
+        btn.textContent = 'Enviar solicitud';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 2500);
+    }, 600);
+  }
+
+  // Smooth scroll for nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // "Reservar esta clase" buttons pre-select duration
+  document.querySelectorAll('.btn-blue-full').forEach((btn, i) => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const duraciones = ['1 hora – $35.000', '1 hora y 30 – $50.000', '2 horas – $70.000'];
+      const select = document.querySelector('#reservar select:nth-of-type(2)');
+      if (select) select.value = duraciones[i];
+      document.querySelector('#reservar').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

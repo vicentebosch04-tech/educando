@@ -30,9 +30,9 @@
     .hero-text h1 span { color: var(--blue); }
     .hero-text p { color: var(--muted); font-size: 1rem; margin-bottom: 2rem; max-width: 420px; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .hero-visual { background: linear-gradient(145deg, #ecfdf5, #f0fdf4, #fefce8); border-radius: 20px; padding: 2.5rem; min-height: 300px; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero-visual { background: linear-gradient(145deg, #ecfdf5, #f0fdf4, #fefce8); border-radius: 20px; padding: 2rem; min-height: 300px; display: flex; flex-direction: column; justify-content: flex-end; }
     .hero-chips { display: flex; gap: 0.6rem; flex-wrap: nowrap; }
-    .chip { padding: 8px 13px; border-radius: 12px; font-weight: 600; font-size: 0.85rem; animation: floatChip 3s ease-in-out infinite; white-space: nowrap; }
+    .chip { padding: 8px 14px; border-radius: 12px; font-weight: 600; font-size: 0.85rem; animation: floatChip 3s ease-in-out infinite; white-space: nowrap; }
     .chip-blue { background: #bfdbfe; color: #1e40af; animation-delay: 0s; }
     .chip-green { background: #a7f3d0; color: #065f46; animation-delay: .5s; }
     .chip-yellow { background: #fde68a; color: #92400e; animation-delay: 1s; }
@@ -52,7 +52,7 @@
     .profile-info h3 { font-size: 0.95rem; font-weight: 700; }
     .profile-info p { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
     .materias-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; }
-    .materia-card { border: 1.5px solid var(--border); border-radius: 16px; padding: 1.5rem; background: white; transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .materia-card { border: 1.5px solid var(--border); border-radius: 16px; padding: 1.5rem; background: white; transition: transform .2s, box-shadow .2s, border-color .2s; cursor: pointer; }
     .materia-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.08); border-color: var(--blue); }
     .materia-icon { font-size: 2rem; margin-bottom: 1rem; }
     .materia-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
@@ -96,7 +96,7 @@
     .footer-brand .tagline { font-size: 0.87rem; color: var(--muted); }
     .footer-brand .subtitle { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
     .footer-col h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem; }
-    .footer-col a, .footer-col p { display: block; font-size: 0.88rem; color: var(--muted); text-decoration: none; margin-bottom: .6rem; }
+    .footer-col a { display: block; font-size: 0.88rem; color: var(--muted); text-decoration: none; margin-bottom: .6rem; }
     .footer-col a:hover { color: var(--blue); }
     .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted); }
     .footer-bottom-links { display: flex; gap: 1.5rem; }
@@ -189,31 +189,36 @@
 </section>
 
 <section id="materias">
-  <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
+  <div class="section-inner">
+    <h2 class="section-title">Materias</h2>
+    <div class="materias-grid">
+      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})">
         <div class="materia-icon">🧮</div>
         <h3>Matemática</h3>
         <p>Cálculo, problemas, fracciones, geometría básica y preparación de pruebas.</p>
       </div>
-      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
+      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})">
         <div class="materia-icon">📖</div>
         <h3>Lengua</h3>
         <p>Comprensión lectora, ortografía, escritura y técnicas de estudio.</p>
       </div>
-      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
+      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})">
         <div class="materia-icon">🌍</div>
         <h3>Ciencias Sociales</h3>
         <p>Historia y Geografía con resúmenes claros y actividades guiadas.</p>
       </div>
-      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
+      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})">
         <div class="materia-icon">🔬</div>
         <h3>Ciencias Naturales</h3>
         <p>Experimentos simples, método científico y apoyo para trabajos.</p>
       </div>
-      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">
+      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})">
         <div class="materia-icon">💻</div>
         <h3>Programación</h3>
         <p>Introducción a la programación, lógica y primeros proyectos digitales.</p>
       </div>
+    </div>
+  </div>
 </section>
 
 <section id="precios">

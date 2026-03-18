@@ -193,27 +193,27 @@
   <div class="section-inner">
     <h2 class="section-title">Materias</h2>
     <div class="materias-grid">
-      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})">
+      <div class="materia-card">
         <div class="materia-icon">🧮</div>
         <h3>Matemática</h3>
         <p>Cálculo, problemas, fracciones, geometría básica y preparación de pruebas.</p>
       </div>
-      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})">
+      <div class="materia-card">
         <div class="materia-icon">📖</div>
         <h3>Lengua</h3>
         <p>Comprensión lectora, ortografía, escritura y técnicas de estudio.</p>
       </div>
-      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})">
+      <div class="materia-card">
         <div class="materia-icon">🌍</div>
         <h3>Ciencias Sociales</h3>
         <p>Historia y Geografía con resúmenes claros y actividades guiadas.</p>
       </div>
-      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})">
+      <div class="materia-card">
         <div class="materia-icon">🔬</div>
         <h3>Ciencias Naturales</h3>
         <p>Experimentos simples, método científico y apoyo para trabajos.</p>
       </div>
-      <div class="materia-card" onclick="document.querySelector('#reservar').scrollIntoView({behavior:'smooth'})">
+      <div class="materia-card">
         <div class="materia-icon">💻</div>
         <h3>Programación</h3>
         <p>Introducción a la programación, lógica y primeros proyectos digitales.</p>
@@ -376,6 +376,7 @@
 </a>
 
 <script>
+  if (window.location.hash) { history.replaceState(null, '', window.location.pathname); }
   const WA_NUMBERS = ['5491139107111', '5491135578110'];
   function getNextNumber() {
     const current = parseInt(localStorage.getItem('wa_turn') || '0');
@@ -410,6 +411,14 @@
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+  const materias = ['Matemática', 'Lengua', 'Ciencias Sociales', 'Ciencias Naturales', 'Programación'];
+  document.querySelectorAll('.materia-card').forEach((card, i) => {
+    card.addEventListener('click', () => {
+      const select = document.querySelectorAll('#reservar select')[1];
+      if (select) select.value = materias[i];
+      document.querySelector('#reservar').scrollIntoView({ behavior: 'smooth' });
     });
   });
   document.querySelectorAll('.btn-blue-full').forEach((btn, i) => {

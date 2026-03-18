@@ -396,8 +396,7 @@
     const direccion = inputs[6].value || '(sin dirección)';
     const contacto = inputs[7].value || '(sin contacto)';
     const comentario = inputs[8].value || '-';
-    const mensaje = `🎓 *Nueva reserva - Educando*\n\n👤 *Alumno:* ${alumno}\n📚 *Grado/Año:* ${grado}\n📖 *Materia:* ${materia}\n⏱ *Tipo de clase:* ${tipo}\n📅 *Día:* ${dia}\n🕐 *Hora:* ${hora}\n📍 *Dirección:* ${direccion}\n📞 *Contacto:* ${contacto}\n💬 *Comentarios:* ${comentario}`;
-    const url = `https://wa.me/${getNextNumber()}?text=${encodeURIComponent(mensaje)}`;
+const mensaje = `*Un paso más cerca de tu clase!*\n\n*Alumno:* ${alumno}\n*Grado/Año:* ${grado}\n*Materia:* ${materia}\n*Tipo de clase:* ${tipo}\n*Día:* ${dia}\n*Hora:* ${hora}\n*Dirección:* ${direccion}\n*Contacto:* ${contacto}\n*Comentarios:* ${comentario}`;    const url = `https://wa.me/${getNextNumber()}?text=${encodeURIComponent(mensaje)}`;
     const btn = document.querySelector('.btn-green');
     btn.textContent = '✓ Redirigiendo a WhatsApp...';
     btn.style.background = '#15803d';

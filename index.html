@@ -327,10 +327,6 @@
           <input type="text" placeholder="Calle y altura, barrio" />
         </div>
         <div class="form-group full">
-          <label>Datos de contacto</label>
-          <input type="text" placeholder="Ej: +54 9 11 1234 5678" />
-        </div>
-        <div class="form-group full">
           <label>Comentarios (opcional)</label>
           <textarea placeholder="Contanos brevemente en qué necesitan ayuda"></textarea>
         </div>
@@ -395,10 +391,9 @@
     const dia = inputs[4].value || '(sin día)';
     const hora = inputs[5].value || '(sin hora)';
     const direccion = inputs[6].value || '(sin dirección)';
-    const contacto = inputs[7].value || '(sin contacto)';
-    const comentario = inputs[8].value || '-';
+    const comentario = inputs[7].value || '-';
 
-    const mensaje = `*¡Un paso más cerca de tu clase!*\n\n🎓 *Nueva reserva - Educando*\n\n👤 *Alumno:* ${alumno}\n📚 *Grado/Año:* ${grado}\n📖 *Materia:* ${materia}\n⏱ *Tipo de clase:* ${tipo}\n📅 *Día:* ${dia}\n🕐 *Hora:* ${hora}\n📍 *Dirección:* ${direccion}\n📞 *Contacto:* ${contacto}\n💬 *Comentarios:* ${comentario}`;
+    const mensaje = `*¡Un paso más cerca de tu clase!*\n\n*Nueva reserva - Educando*\n\n-> *Alumno:* ${alumno}\n-> *Grado/Año:* ${grado}\n-> *Materia:* ${materia}\n-> *Tipo de clase:* ${tipo}\n-> *Día:* ${dia}\n-> *Hora:* ${hora}\n-> *Dirección:* ${direccion}\n-> *Comentarios:* ${comentario}`;
 
     const url = 'https://wa.me/' + getNextNumber() + '?text=' + encodeURIComponent(mensaje);
     const btn = document.querySelector('.btn-green');

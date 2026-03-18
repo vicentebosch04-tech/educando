@@ -110,6 +110,7 @@
       .hero-visual { display: none; }
       .quienes-grid { grid-template-columns: 1fr; }
       .profiles { grid-template-columns: 1fr 1fr; }
+      .profiles .profile-card:last-child { grid-column: 1 / -1; max-width: calc(50% - 0.6rem); margin: 0 auto; }
       .materias-grid { grid-template-columns: 1fr 1fr; }
       .precios-grid { grid-template-columns: 1fr; }
       .pasos-grid { grid-template-columns: 1fr; }
@@ -396,14 +397,38 @@
     const direccion = inputs[6].value || '(sin dirección)';
     const contacto = inputs[7].value || '(sin contacto)';
     const comentario = inputs[8].value || '-';
-const mensaje = `*Un paso más cerca de tu clase!*\n\n*Alumno:* ${alumno}\n*Grado/Año:* ${grado}\n*Materia:* ${materia}\n*Tipo de clase:* ${tipo}\n*Día:* ${dia}\n*Hora:* ${hora}\n*Dirección:* ${direccion}\n*Contacto:* ${contacto}\n*Comentarios:* ${comentario}`;    const url = `https://wa.me/${getNextNumber()}?text=${encodeURIComponent(mensaje)}`;
+
+    const e1 = '\uD83C\uDF93';
+    const e2 = '\uD83D\uDC64';
+    const e3 = '\uD83D\uDCDA';
+    const e4 = '\uD83D\uDCD6';
+    const e5 = '\u23F1';
+    const e6 = '\uD83D\uDCC5';
+    const e7 = '\uD83D\uDD50';
+    const e8 = '\uD83D\uDCCD';
+    const e9 = '\uD83D\uDCDE';
+    const e10 = '\uD83D\uDCAC';
+
+    const mensaje = '*\u00A1Un paso m\u00E1s cerca de tu clase!*\n\n'
+      + e1 + ' *Nueva reserva - Educando*\n\n'
+      + e2 + ' *Alumno:* ' + alumno + '\n'
+      + e3 + ' *Grado/A\u00F1o:* ' + grado + '\n'
+      + e4 + ' *Materia:* ' + materia + '\n'
+      + e5 + ' *Tipo de clase:* ' + tipo + '\n'
+      + e6 + ' *D\u00EDa:* ' + dia + '\n'
+      + e7 + ' *Hora:* ' + hora + '\n'
+      + e8 + ' *Direcci\u00F3n:* ' + direccion + '\n'
+      + e9 + ' *Contacto:* ' + contacto + '\n'
+      + e10 + ' *Comentarios:* ' + comentario;
+
+    const url = 'https://wa.me/' + getNextNumber() + '?text=' + encodeURIComponent(mensaje);
     const btn = document.querySelector('.btn-green');
-    btn.textContent = '✓ Redirigiendo a WhatsApp...';
+    btn.textContent = '\u2713 Redirigiendo a WhatsApp...';
     btn.style.background = '#15803d';
     btn.disabled = true;
     setTimeout(() => {
       window.open(url, '_blank');
-      btn.textContent = '✓ Solicitud enviada';
+      btn.textContent = '\u2713 Solicitud enviada';
       setTimeout(() => { btn.textContent = 'Enviar solicitud'; btn.style.background = ''; btn.disabled = false; }, 2500);
     }, 600);
   }

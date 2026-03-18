@@ -15,12 +15,7 @@
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border); padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between; height: 64px;
-    }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; }
     .nav-logo .logo-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; }
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
@@ -93,7 +88,7 @@
     .form-note { font-size: 0.85rem; color: var(--muted); }
     footer { background: #f9fafb; border-top: 1px solid var(--border); padding: 3rem 2rem 1.5rem; }
     .footer-inner { max-width: 1100px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; margin-bottom: 2rem; }
     .footer-brand .logo { display: flex; align-items: center; gap: 10px; margin-bottom: .8rem; }
     .footer-brand .logo .logo-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; color: white; font-size: .9rem; }
     .footer-brand .logo span { font-weight: 700; font-size: 1rem; }
@@ -102,7 +97,6 @@
     .footer-col h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem; }
     .footer-col a, .footer-col p { display: block; font-size: 0.88rem; color: var(--muted); text-decoration: none; margin-bottom: .6rem; }
     .footer-col a:hover { color: var(--blue); }
-    .footer-col a.whatsapp { color: var(--blue); font-weight: 500; }
     .footer-bottom { border-top: 1px solid var(--border); padding-top: 1.2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--muted); }
     .footer-bottom-links { display: flex; gap: 1.5rem; }
     .footer-bottom-links a { color: var(--muted); text-decoration: none; }
@@ -301,8 +295,10 @@
           <label>Materia</label>
           <select>
             <option value="">Elegí una materia</option>
-            <option>Matemática</option><option>Lengua</option>
-            <option>Ciencias Sociales</option><option>Ciencias Naturales</option>
+            <option>Matemática</option>
+            <option>Lengua</option>
+            <option>Ciencias Sociales</option>
+            <option>Ciencias Naturales</option>
             <option>Programación</option>
           </select>
         </div>
@@ -354,10 +350,6 @@
         </div>
         <p class="subtitle">Exalumnos del Colegio Cardenal Newman</p>
         <p class="tagline" style="margin-top:.6rem;">Aprender con confianza, de la mano de exalumnos del Newman.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <p>WhatsApp: <a href="https://wa.me/5491139107111" class="whatsapp">+54 911 3910 7111</a></p>
       </div>
       <div class="footer-col">
         <h4>Secciones</h4>

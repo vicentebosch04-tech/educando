@@ -414,7 +414,7 @@
     const current = parseInt(localStorage.getItem('wa_turn') || '0');
     localStorage.setItem('wa_turn', (current + 1) % WA_NUMBERS.length);
     window.open('https://wa.me/' + WA_NUMBERS[current], '_blank');
-  }v
+  }
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
